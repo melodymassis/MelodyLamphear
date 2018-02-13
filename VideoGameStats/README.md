@@ -1,85 +1,8 @@
 
-**Player Count**
-
-* Total Number of Players
-
-**Purchasing Analysis (Total)**
-
-* Number of Unique Items
-* Average Purchase Price
-* Total Number of Purchases
-* Total Revenue
-
-**Gender Demographics**
-
-* Percentage and Count of Male Players
-* Percentage and Count of Female Players
-* Percentage and Count of Other / Non-Disclosed
-
-**Purchasing Analysis (Gender)** 
-
-* The below each broken by gender
-  * Purchase Count
-  * Average Purchase Price
-  * Total Purchase Value
-  * Normalized Totals
-
-**Age Demographics**
-
-* The below each broken into bins of 4 years (i.e. &lt;10, 10-14, 15-19, etc.) 
-  * Purchase Count
-  * Average Purchase Price
-  * Total Purchase Value
-  * Normalized Totals
-
-**Top Spenders**
-
-* Identify the the top 5 spenders in the game by total purchase value, then list (in a table):
-  * SN
-  * Purchase Count
-  * Average Purchase Price
-  * Total Purchase Value
-
-**Most Popular Items**
-
-* Identify the 5 most popular items by purchase count, then list (in a table):
-  * Item ID
-  * Item Name
-  * Purchase Count
-  * Item Price
-  * Total Purchase Value
-
-**Most Profitable Items**
-
-* Identify the 5 most profitable items by total purchase value, then list (in a table):
-  * Item ID
-  * Item Name
-  * Purchase Count
-  * Item Price
-  * Total Purchase Value
-
-As final considerations:
-
-* Your script must work for both data-sets given.
-* You must use the Pandas Library and the Jupyter Notebook.
-* You must submit a link to your Jupyter Notebook with the viewable Data Frames. 
-* You must include an exported markdown version of your Notebook called  `README.md` in your GitHub repository.  
-* You must include a written description of three observable trends based on the data. 
-* See [Example Solution](HeroesOfPymoli/HeroesOfPymoli_Example.pdf) for a reference on expected format. 
- 
-
-## Hints and Considerations
-
-* These are challenging activities for a number of reasons. For one, these activities will require you to analyze thousands of records. Hacking through the data to look for obvious trends in Excel is just not a feasible option. The size of the data may seem daunting, but Python Pandas will allow you to efficiently parse through it. 
-
-* Second, these activities will also challenge you by requiring you to learn on your feet. Don't fool yourself into thinking: "I need to study Pandas more closely before diving in." Get the basic gist of the library and then _immediately_ get to work. When facing a daunting task, it's easy to think: "I'm just not ready to tackle it yet." But that's the surest way to never succeed. Learning to program requires one to constantly tinker, experiment, and learn on the fly. You are doing exactly the _right_ thing, if you find yourself constantly practicing Google-Fu and diving into documentation. There is just no way (or reason) to try and memorize it all. Online references are available for you to use when you need them. So use them!
-
-* Take each of these tasks one at a time. Begin your work, answering the basic questions: "How do I import the data?" "How do I convert the data into a DataFrame?" "How do I build the first table?" Don't get intimidated by the number of asks. Many of them are repetitive in nature with just a few tweaks. Be persistent and creative!
-
-* Expect these exercises to take time! Don't get discouraged if you find yourself spending  hours initially with little progress. Force yourself to deal with the discomfort of not knowing and forge ahead. This exercise is likely to take between 15-30 hours of your time. Consider these hours an investment in your future!
-
-* As always, feel encouraged to work in groups and get help from your TAs and Instructor. Just remember, true success comes from mastery and _not_ a completed homework assignment. So challenge yourself to truly succeed!
-
+**Observed Trends**
+* The majority of customers are male at 81% of total users.
+* Over 40% of all transactions are driven by young adult users aged 20-24.
+* Items "Final Critic", "Retribution Axe" and "Stormcaller" are in the top 5 most popular items and are also top revenue drivers.
 
 
 ```python
@@ -353,124 +276,11 @@ merge_table
 
 
 ```python
-#Normalized values
-Normalized_gender = (pd.DataFrame(file.groupby("Gender")["Price"].sum()))/Gender_count['Count'].sum()
-Normalized_gender.reset_index(inplace=True)
-Normalized_gender.columns=["Gender","Normalized Values"]
-Normalized_gender
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Gender</th>
-      <th>Normalized Values</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Female</td>
-      <td>0.668255</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Male</td>
-      <td>3.259476</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Other / Non-Disclosed</td>
-      <td>0.062373</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
 Age_Table = pd.DataFrame(file.groupby('SN')['Age'].unique())
 Age_Table.reset_index(inplace=True)
 Age_Table.columns=["SN","Age"]
-Age_Table.head()
+#Age_Table.head()
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>SN</th>
-      <th>Age</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Adairialis76</td>
-      <td>[20]</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Aduephos78</td>
-      <td>[37]</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Aeduera68</td>
-      <td>[26]</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Aela49</td>
-      <td>[25]</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Aela59</td>
-      <td>[23]</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 
 
 ```python
@@ -598,7 +408,7 @@ Ttl_by_Age = pd.DataFrame(file.groupby("Age_Group")["Price"].sum())
 Ttl_by_Age.reset_index(inplace=True)
 Ttl_by_Age.columns=["Age_Group","Total Purchase"]
 #Normalized values
-Normalized_Age = (pd.DataFrame(file.groupby("Age_Group")["Price"].sum()))/Age_Table["Age"].count()
+Normalized_Age = (pd.DataFrame(file.groupby("Age_Group")["SN"].count()))/Number_Purchases
 Normalized_Age.reset_index(inplace=True)
 Normalized_Age.columns=["Age_Group","Normalized Values"]
 # Create a new table consolidating above calculations
@@ -643,7 +453,7 @@ age_merge_table
       <td>28</td>
       <td>2.980714</td>
       <td>83.46</td>
-      <td>0.145654</td>
+      <td>0.035897</td>
     </tr>
     <tr>
       <th>1</th>
@@ -651,7 +461,7 @@ age_merge_table
       <td>35</td>
       <td>2.770000</td>
       <td>96.95</td>
-      <td>0.169197</td>
+      <td>0.044872</td>
     </tr>
     <tr>
       <th>2</th>
@@ -659,7 +469,7 @@ age_merge_table
       <td>133</td>
       <td>2.905414</td>
       <td>386.42</td>
-      <td>0.674380</td>
+      <td>0.170513</td>
     </tr>
     <tr>
       <th>3</th>
@@ -667,7 +477,7 @@ age_merge_table
       <td>336</td>
       <td>2.913006</td>
       <td>978.77</td>
-      <td>1.708150</td>
+      <td>0.430769</td>
     </tr>
     <tr>
       <th>4</th>
@@ -675,7 +485,7 @@ age_merge_table
       <td>125</td>
       <td>2.962640</td>
       <td>370.33</td>
-      <td>0.646300</td>
+      <td>0.160256</td>
     </tr>
     <tr>
       <th>5</th>
@@ -683,7 +493,7 @@ age_merge_table
       <td>64</td>
       <td>3.082031</td>
       <td>197.25</td>
-      <td>0.344241</td>
+      <td>0.082051</td>
     </tr>
     <tr>
       <th>6</th>
@@ -691,7 +501,7 @@ age_merge_table
       <td>42</td>
       <td>2.842857</td>
       <td>119.40</td>
-      <td>0.208377</td>
+      <td>0.053846</td>
     </tr>
     <tr>
       <th>7</th>
@@ -699,7 +509,7 @@ age_merge_table
       <td>16</td>
       <td>3.189375</td>
       <td>51.03</td>
-      <td>0.089058</td>
+      <td>0.020513</td>
     </tr>
     <tr>
       <th>8</th>
@@ -707,7 +517,7 @@ age_merge_table
       <td>1</td>
       <td>2.720000</td>
       <td>2.72</td>
-      <td>0.004747</td>
+      <td>0.001282</td>
     </tr>
   </tbody>
 </table>
