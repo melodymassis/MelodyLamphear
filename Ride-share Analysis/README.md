@@ -4,7 +4,7 @@
 **Observed Trends**
 * Urban areas have a higher concentration of drivers and fare counts, making up 63% of total revenue. 
 * However, 30% of all fares come from suburban areas, where only 19% of all drivers are located.
-* Most common fare prices hover around 22 and 28 dollars in Urban areas, and between 28 and 33 dollars in sububan areas.
+* Most common fare prices hover around 22 and 28 dollars in Urban areas, and between 28 and 33 dollars in suburban areas.
 
 
 ```python
@@ -27,17 +27,17 @@ city.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -107,17 +107,17 @@ rides.head()
 
 
 <div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
@@ -190,83 +190,8 @@ ride_total = pd.merge(avg_fare, fare_count, on="city",how='left')
 #Merge tables
 combined_table = pd.merge(ride_total, city_total, on="city", how="left")
 combined_table.columns=['city', 'avg_fare', 'fare_count', 'type', 'driver_count']
-combined_table.head()
+#combined_table.head()
 ```
-
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>city</th>
-      <th>avg_fare</th>
-      <th>fare_count</th>
-      <th>type</th>
-      <th>driver_count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Alvarezhaven</td>
-      <td>23.928710</td>
-      <td>31</td>
-      <td>Urban</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Alyssaberg</td>
-      <td>20.609615</td>
-      <td>26</td>
-      <td>Urban</td>
-      <td>67</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Anitamouth</td>
-      <td>37.315556</td>
-      <td>9</td>
-      <td>Suburban</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Antoniomouth</td>
-      <td>23.625000</td>
-      <td>22</td>
-      <td>Urban</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Aprilchester</td>
-      <td>21.981579</td>
-      <td>19</td>
-      <td>Urban</td>
-      <td>49</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 
 
 ```python
@@ -284,8 +209,89 @@ colors_df.columns=['color','type']
 ```python
 #Merge into final table to create scatter plot
 combo_color = pd.merge(combined_table, colors_df, on="type", how="left")
-#combo_color.head()
+combo_color.head()
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>avg_fare</th>
+      <th>fare_count</th>
+      <th>type</th>
+      <th>driver_count</th>
+      <th>color</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alvarezhaven</td>
+      <td>23.928710</td>
+      <td>31</td>
+      <td>Urban</td>
+      <td>21</td>
+      <td>lightblue</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Alyssaberg</td>
+      <td>20.609615</td>
+      <td>26</td>
+      <td>Urban</td>
+      <td>67</td>
+      <td>lightblue</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Anitamouth</td>
+      <td>37.315556</td>
+      <td>9</td>
+      <td>Suburban</td>
+      <td>16</td>
+      <td>coral</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Antoniomouth</td>
+      <td>23.625000</td>
+      <td>22</td>
+      <td>Urban</td>
+      <td>21</td>
+      <td>lightblue</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Aprilchester</td>
+      <td>21.981579</td>
+      <td>19</td>
+      <td>Urban</td>
+      <td>49</td>
+      <td>lightblue</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -307,6 +313,7 @@ plt.text(40, 45, "Circle size correlates to\ndriver count per city",
          weight='bold')
 
 plt.legend(combo_color['type'], title='Location Type', fancybox=True, shadow=True, borderpad=1)
+
 plt.grid(True)
 plt.show()
 ```
