@@ -1,6 +1,7 @@
-# MelodyLamphear
+# Melody Lamphear
 Open Source Projects
-##Follow me on my journey!
+
+**Follow me on my journey!
 
 The last six months I have dedicated my evenings and weekends to work on data analytics projects that cover topics from what 
 makes a startups successful, NASA's website scraping, to UFO sighting data.
