@@ -1,8 +1,8 @@
 *Beautiful Soup*
 
-Leveraged Beautiful Soup and MongoDB to scrape NASA's website
-![img1].(screenshot.png)
+Leveraged Beautiful Soup and MongoDB to scrape NASA's website:
 
+![img](screenshot.png)
 
 Final code:
 
